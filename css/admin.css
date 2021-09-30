@@ -19,20 +19,24 @@
     clear: both;
 }
 
-/* 
-
 .tbl-full{
     width: 100%;
 }
-.tbl-30{
-    width: 30%;
-}
+
 
 table tr th{
     border-bottom: 1px solid black;
     padding: 1%;
     text-align: left;
+    
 }
+
+/* 
+.tbl-30{
+    width: 30%;
+}
+
+
 
 table tr td{
     padding: 1%;

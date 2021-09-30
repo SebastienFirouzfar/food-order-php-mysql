@@ -1,12 +1,14 @@
 <html>
 
 <head>
-    <title>Food order Website - Home page </title>
+    <title>Food Order Website - Home Page</title>
+
     <link rel="stylesheet" href="../css/admin.css">
+
 </head>
 
 <body>
-    <!-- Menu Section start-->
+    <!-- Menu Section Starts -->
     <div class="menu text-center">
         <div class="wrapper">
             <ul>
@@ -18,6 +20,4 @@
             </ul>
         </div>
     </div>
-
-</body>
-</html>
+    <!-- Menu Section Ends -->
