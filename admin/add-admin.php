@@ -55,8 +55,9 @@ if(isset($_POST['submit'])){
     "; 
 
     // 3 execute query and save data in database
-    $conn = mysqli_connect('localhost', 'username', 'password'); 
-    $res = mysqli_query($conn, $sql) or die(mysqli_error());
+    $conn = mysqli_connect('localhost', 'root', '')or die(mysqli_error($conn)); 
+    $db_select = mysqli_select_db($conn, 'food-order') or die(mysqli_error($conn));
+    // $res = mysqli_query($conn, $sql) or die(mysqli_error());
 
 }
 
