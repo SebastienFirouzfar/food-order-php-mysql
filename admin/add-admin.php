@@ -1,4 +1,5 @@
 <?php include('partials/menu.php'); ?>
+<?php include('../config/constant.php'); ?>
 <div class="main-content">
     <div class="wrapper">
         <h1>Add Admin</h1>
@@ -29,7 +30,7 @@
         </form>
     </div>
 </div>
-<?php include('partials/footer.php'); ?>
+<?php include('partials/footer.php'); ?> 
 
 <?php 
  //process the value from form and save it in database
@@ -55,9 +56,17 @@ if(isset($_POST['submit'])){
     "; 
 
     // 3 execute query and save data in database
-    $conn = mysqli_connect('localhost', 'root', '')or die(mysqli_error($conn)); 
-    $db_select = mysqli_select_db($conn, 'food-order') or die(mysqli_error($conn));
-    // $res = mysqli_query($conn, $sql) or die(mysqli_error());
+    // $conn = mysqli_connect('localhost', 'root', '')or die(mysqli_error($conn)); 
+    // $db_select = mysqli_select_db($conn, 'food-order') or die(mysqli_error($conn));
+    $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+    // check whether the query is executed data is inserted into
+    // if($res==true){
+    //     //data inserted into
+    //     echo 'data inserted'; 
+    // }else{
+    //     echo 'data not inserted'; 
+    // }
 
 }
 
