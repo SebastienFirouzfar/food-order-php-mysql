@@ -6,7 +6,14 @@
         <h1>MANAGE ADMIN</h1>
 
         <!-- Button to add Admin-->
-        <br>
+
+        <?php 
+            if(isset($_SESSION['add'])){
+                echo $_SESSION['add']; 
+            }
+        ?>
+
+        <br><br>
         <a href="add-admin.php" class="btn-primary">Add admin </a>
 
         <table class="tbl-full">
