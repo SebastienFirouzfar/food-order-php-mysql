@@ -6,10 +6,10 @@
         <h1>MANAGE ADMIN</h1>
 
         <!-- Button to add Admin-->
-
         <?php 
             if(isset($_SESSION['add'])){
                 echo $_SESSION['add']; 
+                unset($_SESSION['add']); 
             }
         ?>
 
@@ -24,17 +24,48 @@
                 <th> Actions </th>
             </tr>
 
-            <tr>
-                <td> 1. </td>
-                <td> sebastien </td>
-                <td> firouzfar </td>
-                <td>
-                    <a href="#" class="btn-secondary">Update Admin</a>
-                    <a href="#" class="btn-danger">Delete Admin</a>
-                </td>
-            </tr>
+            <?php 
+                $sql = "SELECT * FROM tbl_admin"; 
 
-            <tr>
+                $res = mysqli_query($conn, $sql);
+
+                //check whether the query is executed of not 
+                if($res == true){
+                    //count rows to check whether we have data in database
+                    $rows = mysqli_num_rows($res); 
+                    
+                    if($rows > 0){
+                        
+                        //we have data in database
+                        while($rows=mysqli_fetch_assoc($res)){
+                            $id=$rows['id'];
+                            $full_name=$rows['full_name'];
+                            $username=$rows['username']; 
+                            
+                            //display the value in our table
+
+                            ?>
+                                <tr>
+                                    <td> <?php echo $id; ?> </td>
+                                    <td> <?php echo $full_name; ?> </td>
+                                    <td> <?php echo $username; ?>  </td>
+                                    <td>
+                                        <a href="#" class="btn-secondary">Update Admin</a>
+                                        <a href="#" class="btn-danger">Delete Admin</a>
+                                    </td>
+                                </tr>
+
+                                <?php
+                        }
+                    }else{
+
+                    }
+                }
+
+            ?>
+
+
+            <!-- <tr>
                 <td> 2. </td>
                 <td> sebastien </td>
                 <td> firouzfar </td>
@@ -52,7 +83,7 @@
                     <a href="#" class="btn-secondary">Update Admin</a>
                     <a href="#" class="btn-danger">Delete Admin</a>
                 </td>
-            </tr>
+            </tr> -->
         </table>
 
 
