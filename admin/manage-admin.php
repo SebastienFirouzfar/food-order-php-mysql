@@ -33,20 +33,23 @@
                 if($res == true){
                     //count rows to check whether we have data in database
                     $rows = mysqli_num_rows($res); 
+
+                    $sn = 1; //create a new variable ans assign the value
                     
                     if($rows > 0){
                         
                         //we have data in database
+                        //using the while loop to get all the data from the database
+                        //And while loop will run as long as we have data in the database
                         while($rows=mysqli_fetch_assoc($res)){
                             $id=$rows['id'];
                             $full_name=$rows['full_name'];
                             $username=$rows['username']; 
                             
                             //display the value in our table
-
                             ?>
                                 <tr>
-                                    <td> <?php echo $id; ?> </td>
+                                    <td> <?php echo $sn++; ?> </td>
                                     <td> <?php echo $full_name; ?> </td>
                                     <td> <?php echo $username; ?>  </td>
                                     <td>
