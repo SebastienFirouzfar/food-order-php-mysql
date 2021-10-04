@@ -42,8 +42,7 @@ if(isset($_POST['submit'])){
     // 1 get the data from form
     $full_name = filter_var($_POST['full_name'], FILTER_SANITIZE_STRING);
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-    // $password = ($_POST['password']);
-    $password = filter_var(sha1($_POST['password']), FILTER_SANITIZE_STRING); 
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING); 
 
 
     // 2 sql query to save the data 
