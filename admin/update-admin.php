@@ -84,7 +84,7 @@ if(isset($_POST['submit'])){
     WHERE id = '$id' 
     ";
     
-    //execute the query to
+    //execute the query to and save data in database
     $res = mysqli_query($conn, $sql); 
 
     //check whether the query successfully or not
