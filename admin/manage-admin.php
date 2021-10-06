@@ -16,6 +16,11 @@
                 echo $_SESSION['delete']; 
                 unset($_SESSION['delete']);
             }
+
+            if(isset($_SESSION['update'])){
+                echo $_SESSION['update']; 
+                unset($_SESSION['update']);
+            }
         ?>
 
         <br><br>
@@ -71,27 +76,6 @@
                 }
 
             ?>
-
-
-            <!-- <tr>
-                <td> 2. </td>
-                <td> sebastien </td>
-                <td> firouzfar </td>
-                <td>
-                    <a href="#" class="btn-secondary">Update Admin</a>
-                    <a href="#" class="btn-danger">Delete Admin</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td> 3. </td>
-                <td> sebastien </td>
-                <td> firouzfar </td>
-                <td>
-                    <a href="#" class="btn-secondary">Update Admin</a>
-                    <a href="#" class="btn-danger">Delete Admin</a>
-                </td>
-            </tr> -->
         </table>
 
 
