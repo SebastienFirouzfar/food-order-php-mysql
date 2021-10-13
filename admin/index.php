@@ -5,7 +5,7 @@
     <div class="wrapper">
         <h1>DASHBOARD</h1>
 
-            <?php 
+        <?php 
                  if(isset($_SESSION['login'])){
                     echo $_SESSION['login']; 
                     unset($_SESSION['login']);

@@ -10,6 +10,13 @@
     <div class="login">
         <h1 class="text-center">Login</h1>
 
+        <?php 
+                 if(isset($_SESSION['login'])){
+                    echo $_SESSION['login']; 
+                    unset($_SESSION['login']);
+                }
+            ?>
+
         <form action="" method="POST">
             <label for="">Username : </label>
             
@@ -32,11 +39,11 @@
 if(isset($_POST['submit'])){
     //process for login
     // 1 get the data from login form
-    $user = $_POST['username'];
-    $password = $_POST['password']; 
+    $username = $_POST['username'];
+    $password = md5($_POST['password']); 
 
     // 2 SQL to check whether the user with username and password exist or Not
-    $sql = "SELECT * FROM tbl_admin WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM tbl_admin WHERE username ='$username' AND password ='$password' ";
 
     // 3 execute the query
     $res = mysqli_query($conn, $sql); 
@@ -46,9 +53,9 @@ if(isset($_POST['submit'])){
 
     if($count == 1) {
         $_SESSION['login'] = "<div class='success'> Login successful</div> "; 
-        header("Location:".SITEURL.'admin/login.php'); 
+        header("Location:".SITEURL.'admin/'); 
     }else{
-        $_SESSION['login'] = "<div class='error'> Username or password did not match</div> ";  
+        $_SESSION['login'] = "<div class='error text-center'> Username or password did not match</div> ";  
         header("Location:".SITEURL.'admin/login.php'); 
     }
 
