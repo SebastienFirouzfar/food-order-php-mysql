@@ -94,6 +94,7 @@ if(isset($_POST['submit'])){
                     //Redirect the User
                     header('location:'.SITEURL.'admin/manage-admin.php');
                 }
+            
             }else{
                 //REdirect to Manage Admin Page with Error Message
                 $_SESSION['pwd-not-match'] = "<div class='error'>Password Did not Patch. </div>";
