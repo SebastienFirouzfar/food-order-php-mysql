@@ -37,10 +37,6 @@
                 unset($_SESSION['change-pwd']);
             }
 
-            if(isset($_SESSION['login'])){
-                echo $_SESSION['login']; 
-                unset($_SESSION['login']);
-            }
         ?>
 
         <br><br>
