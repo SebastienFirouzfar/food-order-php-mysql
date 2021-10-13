@@ -46,10 +46,10 @@ if(isset($_POST['submit'])){
 
     if($count == 1) {
         $_SESSION['login'] = "<div class='success'> Login successful</div> "; 
-        header("Location:".SITEURL.'admin/'); 
+        header("Location:".SITEURL.'admin/login.php'); 
     }else{
         $_SESSION['login'] = "<div class='error'> Username or password did not match</div> ";  
-        header("Location:".SITEURL.'admin/'); 
+        header("Location:".SITEURL.'admin/login.php'); 
     }
 
 }
