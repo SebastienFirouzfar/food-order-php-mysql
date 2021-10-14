@@ -15,6 +15,12 @@
                     echo $_SESSION['login']; 
                     unset($_SESSION['login']);
                 }
+
+                if(isset($_SESSION['no-login-message'])){
+                    echo $_SESSION['no-login-message']; 
+                    unset($_SESSION['no-login-message']);
+                }
+
             ?>
 
         <form action="" method="POST">
@@ -52,9 +58,14 @@ if(isset($_POST['submit'])){
     $count = mysqli_num_rows($res); 
 
     if($count == 1) {
+        
+        //User available and login sucess
         $_SESSION['login'] = "<div class='success'> Login successful</div> "; 
+        $_SESSION['user'] = $username;  // to check whether the user is logged in or not and logout will unset it
+        
         header("Location:".SITEURL.'admin/'); 
     }else{
+       
         $_SESSION['login'] = "<div class='error text-center'> Username or password did not match</div> ";  
         header("Location:".SITEURL.'admin/login.php'); 
     }
