@@ -15,11 +15,18 @@
 
         <br>
         <!--Add category start-->
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <table class="tbl-30">
                 <tr>
                     <td>Title :</td>
                     <td><input type="text" name="title" placeholder="Category Title"></td>
+                </tr>
+
+                <tr>
+                    <td>Select Images: </td>
+                    <td>
+                        <input type="file" name="image">
+                    </td>
                 </tr>
 
                 <tr>
@@ -70,6 +77,22 @@
               }else{
                   $active = "No";
               }
+
+              // check whether the image is selected or Not set the value for image name according
+              print_r($_FILES['image']);
+
+            //   die(); // break code 
+
+            if(isset($_POST['image']['name'])){
+                //upload the image
+                // to Upload image we need image name, source path and destination path 
+                $image = $_POST['image']['name'];
+                $source_path = $_POST['image']['tmp_name'];
+                $destination_path = ""; 
+            }else{
+                //don't upload the image and set the image as blank 
+                $image_name = "";
+            }
 
           //2. Create SQL Query to Insert CAtegory into Database
           $sql = "INSERT INTO tbl_category SET 
