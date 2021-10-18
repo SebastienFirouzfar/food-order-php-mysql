@@ -21,20 +21,20 @@
                     <td>Title :</td>
                     <td><input type="text" name="title" placeholder="Category Title"></td>
                 </tr>
-                
+
                 <tr>
                     <td>Featured: </td>
                     <td>
-                        <input type="radio" name="featured" value="Yes"> Yes 
-                        <input type="radio" name="featured" value="No"> No 
+                        <input type="radio" name="featured" value="Yes"> Yes
+                        <input type="radio" name="featured" value="No"> No
                     </td>
                 </tr>
 
                 <tr>
                     <td>Active: </td>
                     <td>
-                        <input type="radio" name="active" value="Yes"> Yes 
-                        <input type="radio" name="active" value="No"> No 
+                        <input type="radio" name="active" value="Yes"> Yes
+                        <input type="radio" name="active" value="No"> No
                     </td>
                 </tr>
 
@@ -52,52 +52,50 @@
         //check whether the submit button is clicked or not
         if(isset($_POST['submit'])){
             // echo 'clicked'; 
-            // 1 get the value from category from category
-            $title = $_POST['title'];
-             
 
-            //for radio input, we need to check whether the button is selected or not
-            if(isset($_POST['featured'])){
-                //get the value from form
-                $featured = $_POST['featured']; 
-            }else{
-                //set the default value
-                $featured = "No"; 
-            }
+              //1. Get the Value from CAtegory Form
+              $title = $_POST['title'];
 
-            if(isset($_POST['active'])){
-                $active = $_POST['active']; 
-            }else{
-                $active = "No"; 
-            }
+              //For Radio input, we need to check whether the button is selected or not
+              if(isset($_POST['featured'])){
+                  //Get the VAlue from form
+                  $featured = $_POST['featured'];
+              }else{
+                  //SEt the Default VAlue
+                  $featured = "No";
+              }
 
-            // 2 Create sql query to insert catégory intro database
-            $sql = "INSERT INTO tbl_category SET
-            title='$title',
-            featured='$featured',
-            active='$active'
-            "; 
+              if(isset($_POST['active'])){
+                  $active = $_POST['active'];
+              }else{
+                  $active = "No";
+              }
 
-            // 3 Execute the query and save in database
-            $res = mysqli_query($conn, $sql); 
-            // 4 check whether the query executed or not ans data added or not
+          //2. Create SQL Query to Insert CAtegory into Database
+          $sql = "INSERT INTO tbl_category SET 
+          title='$title',
+          image_name='$image_name',
+          featured='$featured',
+          active='$active'
+      ";
 
-            if($res == true){
-                //query Executed and category add
-                $_SESSION['add'] = "<div class='success'> Category added successfully</div>"; 
-                
-                //redirect
-                 header("Location:".SITEURL.'admin/manage-category.php'); 
-            }else{
-                //Failed to add category
-                $_SESSION['add'] = "<div class='error'> faile to add Category</div>";  
-                
-                //redirect
-                 header("Location:".SITEURL.'admin/manage-category.php'); 
-            }
+        //3. Execute the Query and Save in Database
+        $res = mysqli_query($conn, $sql);
+
+        //4. Check whether the query executed or not and data added or not
+        if($res==true){
+            //Query Executed and Category Added
+            $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div>";
+            //Redirect to Manage Category Page
+            header('location:'.SITEURL.'admin/manage-category.php');
+        }else{
+            //Failed to Add CAtegory
+            $_SESSION['add'] = "<div class='error'>Failed to Add Category.</div>";
+            //Redirect to Manage Category Page
+            header('location:'.SITEURL.'admin/add-category.php');
         }
+    }
 
-        
         ?>
 
     </div>
