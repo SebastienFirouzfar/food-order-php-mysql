@@ -34,6 +34,9 @@
                 //count Rows
                 $count = mysqli_num_rows($res); 
 
+                //create Serial number variable and assing value as 1
+                $sn = 1; 
+
                 if($count > 0) {
                     //we have data in database
                     // get the data and display 
@@ -47,9 +50,25 @@
                         ?>
 
                         <tr>
-                            <td> 1 </td>
+                            <td> <?php echo $sn++ ?> </td>
                             <td> <?php echo $title ?> </td>
-                            <td> <?php echo $image_name ?></td>
+                            <td> 
+                                <?php 
+                                   if($image_name!="") {
+                                       //Display the Image
+                                       ?>
+                                       
+                                       <img src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" width="100px" >
+                                       
+                                       <?php
+                                   }else{
+                                        //display the Message
+                                        echo "<div class='error'> Image not added </div>" ;
+                                    }
+                                ?>
+                                
+                        
+                            </td>
                             <td> <?php echo $featured ?></td>
                             <td> <?php echo $active  ?></td>
 
