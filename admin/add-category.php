@@ -13,6 +13,14 @@
             }
         ?>
 
+
+        <?php 
+            if(isset($_SESSION['upload'])){
+                echo $_SESSION['upload']; //
+                unset($_SESSION['upload']);
+            }
+        ?>
+
         <br>
         <!--Add category start-->
         <form action="" method="POST" enctype="multipart/form-data">
@@ -79,16 +87,33 @@
               }
 
               // check whether the image is selected or Not set the value for image name according
-              print_r($_FILES['image']);
+            //   print_r($_FILES['image']);
 
             //   die(); // break code 
 
-            if(isset($_POST['image']['name'])){
+            if(isset($_FILES['image']['name'])){
                 //upload the image
                 // to Upload image we need image name, source path and destination path 
-                $image = $_POST['image']['name'];
-                $source_path = $_POST['image']['tmp_name'];
-                $destination_path = ""; 
+                $image_name = $_FILES['image']['name'];
+                $source_path = $_FILES['image']['tmp_name'];
+                $destination_path = "../images/category".$image_name;
+                
+                //finally upload the image 
+                $upload = move_uploaded_file($source_path, $destination_path);
+                
+                //check whether the image is uploaded or not
+                //and if the image is not uploaded then we will stop the process and redirect with error Message
+                if($upload == false){
+                    //set message
+                    $_SESSION['upload'] = '<div class="error"> Failed to upload Image </div>'; 
+
+                    //redirect to add category
+                    header('Location:'.SITEURL.'admin/add-category.php'); 
+
+                    //stop process
+                    die(); 
+
+                }
             }else{
                 //don't upload the image and set the image as blank 
                 $image_name = "";
